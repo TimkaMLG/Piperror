@@ -48,8 +48,8 @@ class StartMenuScene: SKScene {
         let touchNode = self.nodes(at: touchPosition)
 
         if touchNode.contains(startButton) {
-            let gamescene = GameScene(size: self.frame.size)
-            self.view?.presentScene(gamescene)
+            let levelscene = LevelMenuScene(size: self.frame.size)
+            self.view?.presentScene(levelscene)
         }
         else {
             
