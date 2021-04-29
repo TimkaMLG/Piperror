@@ -16,6 +16,9 @@ class GameScene1 : SKScene, SKPhysicsContactDelegate {
     var gameover = Bool()
     var gameStarted = Bool()
     var barrier1:SKSpriteNode!
+    var barrier2:SKSpriteNode!
+    var startButton:SKSpriteNode!
+    var exitButton:SKSpriteNode!
     
     let ballCategory: UInt32 = 1 << 0
     let WallCategory: UInt32 = 1 << 1
@@ -29,27 +32,40 @@ class GameScene1 : SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = .zero
         self.anchorPoint = .zero
-        
+        self.backgroundColor = UIColor(#colorLiteral(red: 0.2177612185, green: 0.2177672982, blue: 0.2177640498, alpha: 1))
         moving = SKNode()
         moving.speed = 0
         self.addChild(moving)
         
-        let leftWallTexture = SKSpriteNode(color: .white, size: CGSize(width: 100, height: 100))
-        leftWallTexture.size = CGSize(width: self.size.width / 100, height: self.size.height)
-        leftWallTexture.position = CGPoint(x: self.size.width / 5 - leftWallTexture.size.width / 2, y: self.size.height / 2)
+        //create start button
+        let startButtonTexture = SKTexture(imageNamed: "startbutton")
+        startButtonTexture.filteringMode = .nearest
         
-        let rightWallTexture = SKSpriteNode(color: .white, size: CGSize(width: 100, height: 100))
-        rightWallTexture.size = CGSize(width: self.size.width / 100, height: self.size.height)
-        rightWallTexture.position = CGPoint(x: self.size.width * 4 / 5 + rightWallTexture.size.width / 2, y: self.size.height / 2)
+        startButton = SKSpriteNode(texture: startButtonTexture)
+        startButton.size = CGSize(width: 0.12 * self.size.width, height: 0.12 * self.size.width)
+        startButton.position = CGPoint(x: 0.1 * self.size.width, y: 0.1 * self.size.width)
         
+        self.addChild(startButton)
+        //create exit button
+        let exitButtonTexture = SKTexture(imageNamed: "exitbutton")
+        exitButtonTexture.filteringMode = .nearest
+        
+        exitButton = SKSpriteNode(texture: exitButtonTexture)
+        exitButton.size = CGSize(width: 0.12 * self.size.width, height: 0.12 * self.size.width)
+        exitButton.position = CGPoint(x: 0.9 * self.size.width, y: 0.1 * self.size.width)
+        
+        self.addChild(exitButton)
         //setup ball
-        let ballTexture = SKTexture(imageNamed: "bird.png")
+        let ballTexture = SKTexture(imageNamed: "ball.png")
         ballTexture.filteringMode = .nearest
         
         ball = SKSpriteNode(texture: ballTexture)
-        ball.size = CGSize(width: self.size.width / 10, height: self.size.width / 10)
-        ball.position = CGPoint(x: self.size.width / 2, y: ball.size.height)
+        ball.size = CGSize(width: 0.033 * self.size.width, height: 0.033 * self.size.width)
+        ball.position = CGPoint(x: self.size.width / 2, y: 0.28 * self.size.height)
         
+        let ballrotate = SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)
+        let foreverballrotate = SKAction.repeatForever(ballrotate)
+        ball.run(foreverballrotate)
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.height / 2.0)
         ball.physicsBody?.isDynamic = true
         ball.physicsBody?.allowsRotation = false
@@ -57,57 +73,70 @@ class GameScene1 : SKScene, SKPhysicsContactDelegate {
         ball.physicsBody?.categoryBitMask = ballCategory
         ball.physicsBody?.collisionBitMask = WallCategory | barrierCategory
         ball.physicsBody?.contactTestBitMask = WallCategory | barrierCategory
-        
-        
-        /*
-        //create the left WallTexture
-        let leftWall = SKNode()
-        leftWall.position = CGPoint(x: self.size.width / 10, y: self.size.height / 2)
-        leftWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width / 5, height: self.size.height))
-        leftWall.physicsBody?.isDynamic = false
-        leftWall.physicsBody?.categoryBitMask = WallCategory
-        leftWall.physicsBody?.contactTestBitMask = ballCategory
-        self.addChild(leftWall)
-        
-        //create the right WallTexture
-        let rightWall = SKNode()
-
-        rightWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width / 5, height: self.size.height))
-        rightWall.position = CGPoint(x: self.size.width - self.size.width / 10, y: self.size.height / 2)
-        rightWall.physicsBody?.isDynamic = false
-        rightWall.physicsBody?.categoryBitMask = WallCategory
-        self.addChild(rightWall)
-        */
-        self.addChild(leftWallTexture)
-        self.addChild(rightWallTexture)
+        ball.speed = 0
         self.addChild(ball)
         
-        //crate barriers
-        
-        barrier1 = SKSpriteNode(color: .white, size: CGSize(width: self.size.width / 20, height: self.size.width))
+        //create barriers
+        //barrier 1
+        let barrierTexture = SKTexture(imageNamed: "barrier")
+        barrierTexture.filteringMode = .nearest
+        barrier1 = SKSpriteNode(texture: barrierTexture)
+        barrier1.size = CGSize(width: 0.03 * self.size.width, height: 0.225 * self.size.height)
         barrier1.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: barrier1.size.width, height: barrier1.size.height))
         barrier1.physicsBody?.isDynamic = false
         barrier1.physicsBody?.allowsRotation = false
-        barrier1.position = CGPoint(x: rightWallTexture.position.x, y: 0.4 * self.size.height)
+        barrier1.position = CGPoint(x: 0.64 * self.size.width, y: 0.5 * self.size.height)
         barrier1.physicsBody?.categoryBitMask = barrierCategory
         barrier1.physicsBody?.contactTestBitMask = ballCategory
+        
         let barrierRotate = SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 4)
         let foreverBarrierRotate = SKAction.repeatForever(barrierRotate)
         barrier1.run(foreverBarrierRotate)
+        
         moving.addChild(barrier1)
+        
+        //barrier 2
+        let barrier2Texture = SKTexture(imageNamed: "barrier2")
+        barrier2Texture.filteringMode = .nearest
+        barrier2 = SKSpriteNode(imageNamed: "barrier2")
+        barrier2.size = CGSize(width: 0.22 * self.size.width, height: 0.05 * self.size.height)
+        barrier2.position = CGPoint(x: self.size.width - barrier1.position.x - barrier1.size.width / 2 + barrier2.size.width / 2,
+                                    y: 0.37 * self.size.height)
+        
+        barrier2.physicsBody = SKPhysicsBody(texture: barrier2.texture!, size: barrier2.size)
+        barrier2.physicsBody?.isDynamic = false
+        barrier2.physicsBody?.allowsRotation = false
+        barrier2.physicsBody?.categoryBitMask = barrierCategory
+        barrier2.physicsBody?.contactTestBitMask = ballCategory
+        
+        barrier2.run(foreverBarrierRotate)
+        
+        moving.addChild(barrier2)
+        
     }
 
     func didBegin(_ contact: SKPhysicsContact) {
         gameover = true
+        ball.speed = 0
         moving.speed = 0
         ball.physicsBody?.velocity = .zero
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        let touchPosition = touch!.location(in: self)
+        let touchNode = self.nodes(at: touchPosition)
+        if touchNode.contains(exitButton) {
+            let LevelMenu = LevelMenuScene(size: self.frame.size)
+            self.view?.presentScene(LevelMenu)
+        }
         if (!gameStarted){
-            gameStarted = true
-            moving.speed = 1
-            ball.physicsBody?.velocity = CGVector(dx: 0, dy: 100)
+            if touchNode.contains(startButton) {
+                gameStarted = true
+                moving.speed = 1
+                ball.speed = 1
+                ball.physicsBody?.velocity = CGVector(dx: 0, dy: 100)
+            }
         }
         else if (gameover){
             let GameOverScene = StartMenuScene(size: self.frame.size)
