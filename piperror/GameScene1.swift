@@ -18,8 +18,7 @@ class GameScene1 : SKScene, SKPhysicsContactDelegate {
     var barrier1:SKSpriteNode!
     var barrier2:SKSpriteNode!
     var startButton:SKSpriteNode!
-    var exitButton:SKSpriteNode!
-    
+    var exitButton:ButtonNode!
     let ballCategory: UInt32 = 1 << 0
     let WallCategory: UInt32 = 1 << 1
     let barrierCategory: UInt32 = 1 << 2
@@ -28,6 +27,9 @@ class GameScene1 : SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         gameover = false
         gameStarted = false
+        
+        
+
         
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = .zero
@@ -50,10 +52,10 @@ class GameScene1 : SKScene, SKPhysicsContactDelegate {
         let exitButtonTexture = SKTexture(imageNamed: "exitbutton")
         exitButtonTexture.filteringMode = .nearest
         
-        exitButton = SKSpriteNode(texture: exitButtonTexture)
+        exitButton = ButtonNode(imageNamed: "exitbutton")
         exitButton.size = CGSize(width: 0.12 * self.size.width, height: 0.12 * self.size.width)
         exitButton.position = CGPoint(x: 0.9 * self.size.width, y: 0.1 * self.size.width)
-        
+        exitButton.handler = exitButtonAction
         self.addChild(exitButton)
         //setup ball
         let ballTexture = SKTexture(imageNamed: "ball.png")
@@ -122,14 +124,17 @@ class GameScene1 : SKScene, SKPhysicsContactDelegate {
         ball.physicsBody?.velocity = .zero
     }
     
+    func exitButtonAction() {
+        print("NIHUA")
+        let LevelMenu = LevelMenuScene(size: self.frame.size)
+        self.view?.presentScene(LevelMenu)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         let touchPosition = touch!.location(in: self)
         let touchNode = self.nodes(at: touchPosition)
-        if touchNode.contains(exitButton) {
-            let LevelMenu = LevelMenuScene(size: self.frame.size)
-            self.view?.presentScene(LevelMenu)
-        }
+        
         if (!gameStarted){
             if touchNode.contains(startButton) {
                 gameStarted = true
