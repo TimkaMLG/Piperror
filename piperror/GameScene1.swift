@@ -16,7 +16,7 @@ class GameScene1 : SKScene, SKPhysicsContactDelegate {
     var gameover = Bool()
     var gameStarted = Bool()
     var barrier1:SKSpriteNode!
-    var barrier2:SKSpriteNode!
+    var barrier2:BarrageNode!
     var startButton:SKSpriteNode!
     var exitButton:ButtonNode!
     let ballCategory: UInt32 = 1 << 0
@@ -98,19 +98,14 @@ class GameScene1 : SKScene, SKPhysicsContactDelegate {
         moving.addChild(barrier1)
         
         //barrier 2
-        let barrier2Texture = SKTexture(imageNamed: "barrier2")
-        barrier2Texture.filteringMode = .nearest
-        barrier2 = SKSpriteNode(imageNamed: "barrier2")
-        barrier2.size = CGSize(width: 0.22 * self.size.width, height: 0.05 * self.size.height)
+        barrier2 = BarrageNode(imageName: "barrier2",
+                               size: CGSize(width: 0.22 * self.size.width, height: 0.05 * self.size.height),
+                               barrageCategory: barrierCategory,
+                               ballCategory: ballCategory)
+        
         barrier2.position = CGPoint(x: self.size.width - barrier1.position.x - barrier1.size.width / 2 + barrier2.size.width / 2,
                                     y: 0.37 * self.size.height)
-        
-        barrier2.physicsBody = SKPhysicsBody(texture: barrier2.texture!, size: barrier2.size)
-        barrier2.physicsBody?.isDynamic = false
-        barrier2.physicsBody?.allowsRotation = false
-        barrier2.physicsBody?.categoryBitMask = barrierCategory
-        barrier2.physicsBody?.contactTestBitMask = ballCategory
-        
+
         barrier2.run(foreverBarrierRotate)
         
         moving.addChild(barrier2)
