@@ -9,6 +9,7 @@
 import SpriteKit
 import GameplayKit
 
+var Arr = [[0,0], [0,0]]
 class GameScenePattern : SKScene, SKPhysicsContactDelegate {
     
     var ball:SKSpriteNode!
