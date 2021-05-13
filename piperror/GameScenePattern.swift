@@ -20,8 +20,8 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
     let ballCategory: UInt32 = 1 << 0
     let WallCategory: UInt32 = 1 << 1
     let barrierCategory: UInt32 = 1 << 2
-
-
+    var terminal:terminalNode!
+    var currentbarrage: BarrageNode!
     override func didMove(to view: SKView) {
         gameover = false
         gameStarted = false
@@ -37,13 +37,14 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
         moving.speed = 0
         self.addChild(moving)
         
+        
+        
         //create start button
         startButton = ButtonNode(imageNamed: "startbutton")
         startButton.size = CGSize(width: 0.12 * self.size.width, height: 0.12 * self.size.width)
         startButton.position = CGPoint(x: 0.1 * self.size.width, y: 0.1 * self.size.width)
         startButton.handler = startButtonAction
         self.addChild(startButton)
-        
         //create exit button
         exitButton = ButtonNode(imageNamed: "exitbutton")
         exitButton.size = CGSize(width: 0.12 * self.size.width, height: 0.12 * self.size.width)
@@ -51,6 +52,11 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
         exitButton.handler = exitButtonAction
         self.addChild(exitButton)
         
+        //create terminal
+        terminal = terminalNode(size: CGSize(width: self.size.width, height: self.size.height / 10))
+        terminal.position = CGPoint(x: self.size.width / 2, y: 3 * startButton.size.height)
+        self.addChild(terminal)
+        terminal.isHidden = true
         //setup ball
         let ballTexture = SKTexture(imageNamed: "ball.png")
         ballTexture.filteringMode = .nearest
@@ -81,6 +87,8 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
         moving.speed = 0
         ball.physicsBody?.velocity = .zero
     }
+    
+    
     
     func startButtonAction() {
         if (!gameStarted){

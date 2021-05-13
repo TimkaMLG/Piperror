@@ -23,6 +23,7 @@
 		C38C6FF52602A82B00AC05F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C38C6FF32602A82B00AC05F5 /* LaunchScreen.storyboard */; };
 		C38C70032603ECD500AC05F5 /* StartMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C70022603ECD500AC05F5 /* StartMenuScene.swift */; };
 		C3E54A7A264D7CCB00B158A3 /* GameScenePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E54A79264D7CCB00B158A3 /* GameScenePattern.swift */; };
+		C3E54A7C264DBC6300B158A3 /* terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E54A7B264DBC6300B158A3 /* terminal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		C38C6FF62602A82B00AC05F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C38C70022603ECD500AC05F5 /* StartMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuScene.swift; sourceTree = "<group>"; };
 		C3E54A79264D7CCB00B158A3 /* GameScenePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScenePattern.swift; sourceTree = "<group>"; };
+		C3E54A7B264DBC6300B158A3 /* terminal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = terminal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				C3696423263C281F003D434A /* Button.swift */,
 				C3696425264484BF003D434A /* Barrage.swift */,
 				C3E54A79264D7CCB00B158A3 /* GameScenePattern.swift */,
+				C3E54A7B264DBC6300B158A3 /* terminal.swift */,
 			);
 			path = piperror;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				C38C70032603ECD500AC05F5 /* StartMenuScene.swift in Sources */,
 				C38C6FEB2602A82400AC05F5 /* GameScene.swift in Sources */,
 				AF166F0226205FF8000041C4 /* GameScene2.swift in Sources */,
+				C3E54A7C264DBC6300B158A3 /* terminal.swift in Sources */,
 				C38C6FED2602A82400AC05F5 /* GameViewController.swift in Sources */,
 				AF166EFF26205FD8000041C4 /* GameScene1.swift in Sources */,
 				C3696426264484BF003D434A /* Barrage.swift in Sources */,

@@ -30,6 +30,7 @@ class GameScene2 : GameScenePattern {
                                ballCategory: ballCategory)
         barrier1.position = CGPoint(x: 0.64 * self.size.width, y: 0.5 * self.size.height)
         barrier1.run(foreverBarrierRotate)
+        barrier1.terminal = terminal
         moving.addChild(barrier1)
         
         barrier2 = BarrageNode(imageName: "barrier2",
@@ -39,6 +40,7 @@ class GameScene2 : GameScenePattern {
         barrier2.position = CGPoint(x: self.size.width - barrier1.position.x - barrier1.size.width / 2 + barrier2.size.width / 2,
                                     y: 0.37 * self.size.height)
         barrier2.run(foreverBarrierRotate)
+        barrier2.terminal = terminal
         moving.addChild(barrier2)
         
         barrier3 = BarrageNode(imageName: "barrier3",
@@ -48,6 +50,7 @@ class GameScene2 : GameScenePattern {
         barrier3.position = CGPoint(x: barrier2.position.x - barrier2.size.width / 2 + barrier1.size.width / 2,
                                     y: 0.60 * self.size.height)
         barrier3.run(foreverBarrierRotate)
+        barrier3.terminal = terminal
         moving.addChild(barrier3)
         barrier4 = BarrageNode(imageName: "barrier4",
                                size: CGSize(width: barrier3.size.width, height: barrier3.size.width / 2),
@@ -56,6 +59,7 @@ class GameScene2 : GameScenePattern {
         barrier4.position = CGPoint(x: barrier1.position.x,
                                     y: 0.70 * self.size.height)
         barrier4.run(foreverBarrierRotate)
+        barrier4.terminal = terminal
         moving.addChild(barrier4)
     }
 
