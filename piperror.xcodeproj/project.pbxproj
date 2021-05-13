@@ -22,6 +22,7 @@
 		C38C6FF22602A82B00AC05F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38C6FF12602A82B00AC05F5 /* Assets.xcassets */; };
 		C38C6FF52602A82B00AC05F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C38C6FF32602A82B00AC05F5 /* LaunchScreen.storyboard */; };
 		C38C70032603ECD500AC05F5 /* StartMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C70022603ECD500AC05F5 /* StartMenuScene.swift */; };
+		C3E54A7A264D7CCB00B158A3 /* GameScenePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E54A79264D7CCB00B158A3 /* GameScenePattern.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		C38C6FF42602A82B00AC05F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C38C6FF62602A82B00AC05F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C38C70022603ECD500AC05F5 /* StartMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuScene.swift; sourceTree = "<group>"; };
+		C3E54A79264D7CCB00B158A3 /* GameScenePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScenePattern.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				AF166EFB26205DC5000041C4 /* LevelMenu.swift */,
 				C3696423263C281F003D434A /* Button.swift */,
 				C3696425264484BF003D434A /* Barrage.swift */,
+				C3E54A79264D7CCB00B158A3 /* GameScenePattern.swift */,
 			);
 			path = piperror;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF166EFC26205DC5000041C4 /* LevelMenu.swift in Sources */,
+				C3E54A7A264D7CCB00B158A3 /* GameScenePattern.swift in Sources */,
 				C38C70032603ECD500AC05F5 /* StartMenuScene.swift in Sources */,
 				C38C6FEB2602A82400AC05F5 /* GameScene.swift in Sources */,
 				AF166F0226205FF8000041C4 /* GameScene2.swift in Sources */,
