@@ -13,7 +13,7 @@ class BarrageNode: SKSpriteNode {
     
     var handler: (() -> Void)?
     var terminal:terminalNode!
-    
+    var Arr = [0,0]
     init(imageName: String, size: CGSize, barrageCategory: UInt32, ballCategory: UInt32) {
         
         let texture = SKTexture(imageNamed: imageName)
