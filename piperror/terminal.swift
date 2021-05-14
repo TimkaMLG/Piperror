@@ -28,12 +28,12 @@ class terminalNode: SKSpriteNode {
             cond = (cond + 1)%2
             if cond == 0 {
                 Arr[lin][numb] = 0
-                self.texture = SKTexture(imageNamed: "but")
+                self.texture = SKTexture(imageNamed: "startbutton")
                 print(Arr)
             }
             if cond == 1 {
                 Arr[lin][numb] = 1
-                self.texture = SKTexture(imageNamed: "but1")
+                self.texture = SKTexture(imageNamed: "exitbutton")
                 print(Arr)
             }
             
@@ -49,13 +49,13 @@ class terminalNode: SKSpriteNode {
     var Button2: But!
 
     
-    init(to view: SKView, size: CGSize, i: Int) {
+    init(size: CGSize, i: Int) {
         
-        let Button1 = But(imageNamed: "but", num: 0, line: i)
+        let Button1 = But(imageNamed: "startbutton", num: 0, line: i)
         
-        let Button2 = But(imageNamed: "but", num: 1, line: i)
+        let Button2 = But(imageNamed: "startbutton", num: 1, line: i)
         
-        super.init(texture: SKTexture(imageNamed: "but"), color: UIColor.clear, size: size)
+        super.init(texture: SKTexture(imageNamed: "startbutton"), color: UIColor.clear, size: size)
         
         Button1.size = CGSize(width: self.size.width * 0.16, height: self.size.height * 0.09)
     

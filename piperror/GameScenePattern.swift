@@ -54,7 +54,8 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
         self.addChild(exitButton)
         
         //create terminal
-        terminal = terminalNode(size: CGSize(width: self.size.width, height: self.size.height / 10))
+        terminal = terminalNode(size: CGSize(width: self.size.width, height: self.size.height / 10), i: 0)
+        
         terminal.position = CGPoint(x: self.size.width / 2, y: 3 * startButton.size.height)
         self.addChild(terminal)
         terminal.isHidden = true
