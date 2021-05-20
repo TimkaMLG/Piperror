@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 class BarrageNode: SKSpriteNode {
-    
+    var i = Int()
     var handler: (() -> Void)?
     var terminal:terminalNode!
     
@@ -32,7 +32,7 @@ class BarrageNode: SKSpriteNode {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (terminal.isHidden) {
-            terminal.currentbarrage = self
+            terminal.j = i
             terminal.isHidden = false
         }
         else {
