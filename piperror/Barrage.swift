@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 class BarrageNode: SKSpriteNode {
-    
+    var i = Int()
     var handler: (() -> Void)?
     var terminal:terminalNode!
     var Arr = [2,0,2,1,0]
