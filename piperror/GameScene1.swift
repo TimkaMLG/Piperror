@@ -82,31 +82,7 @@ class GameScene1 : SKScene, SKPhysicsContactDelegate {
         //barrier 1
         let barrierTexture = SKTexture(imageNamed: "barrier")
         barrierTexture.filteringMode = .nearest
-        barrier1 = SKSpriteNode(texture: barrierTexture)
-        barrier1.size = CGSize(width: 0.03 * self.size.width, height: 0.225 * self.size.height)
-        barrier1.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: barrier1.size.width, height: barrier1.size.height))
-        barrier1.physicsBody?.isDynamic = false
-        barrier1.physicsBody?.allowsRotation = false
-        barrier1.position = CGPoint(x: 0.64 * self.size.width, y: 0.5 * self.size.height)
-        barrier1.physicsBody?.categoryBitMask = barrierCategory
-        barrier1.physicsBody?.contactTestBitMask = ballCategory
-        
-        let barrierRotate = SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 4)
-        let foreverBarrierRotate = SKAction.repeatForever(barrierRotate)
-        barrier1.run(foreverBarrierRotate)
-        
-        moving.addChild(barrier1)
-        
-        //barrier 2
-        barrier2 = BarrageNode(imageName: "barrier2",
-                               size: CGSize(width: 0.22 * self.size.width, height: 0.05 * self.size.height),
-                               barrageCategory: barrierCategory,
-                               ballCategory: ballCategory)
-        
-        barrier2.position = CGPoint(x: self.size.width - barrier1.position.x - barrier1.size.width / 2 + barrier2.size.width / 2,
-                                    y: 0.37 * self.size.height)
 
-        barrier2.run(foreverBarrierRotate)
         
         moving.addChild(barrier2)
         

@@ -16,6 +16,7 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
     var moving:SKNode!
     var gameover = Bool()
     var gameStarted = Bool()
+    var line:SKSpriteNode!
     var startButton:ButtonNode!
     var exitButton:ButtonNode!
     let ballCategory: UInt32 = 1 << 0
@@ -34,6 +35,11 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = .zero
         self.anchorPoint = .zero
         self.backgroundColor = UIColor(#colorLiteral(red: 0.2177612185, green: 0.2177672982, blue: 0.2177640498, alpha: 1))
+        line = SKSpriteNode(imageNamed: "line")
+        line.size = CGSize(width: self.size.width * 24/90, height: self.size.height * 9 / 16)
+        line.position = CGPoint(x: self.size.width / 2, y: self.size.height * 9 / 16)
+        line.zPosition = -1
+        self.addChild(line)
         moving = SKNode()
         moving.speed = 0
         self.addChild(moving)
@@ -58,7 +64,7 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
         
         terminal.position = CGPoint(x: self.size.width / 2, y: 3 * startButton.size.height)
         self.addChild(terminal)
-        terminal.isHidden = true
+        terminal.isHidden = false
         //setup ball
         let ballTexture = SKTexture(imageNamed: "ball.png")
         ballTexture.filteringMode = .nearest
@@ -80,7 +86,7 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
         ball.speed = 0
         self.addChild(ball)
         
-        
+        terminal.draw()
     }
 
     func didBegin(_ contact: SKPhysicsContact) {

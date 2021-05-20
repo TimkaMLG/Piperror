@@ -13,17 +13,23 @@ class BarrageNode: SKSpriteNode {
     
     var handler: (() -> Void)?
     var terminal:terminalNode!
-    var Arr = [0,0]
-    init(imageName: String, size: CGSize, barrageCategory: UInt32, ballCategory: UInt32) {
+    var Arr = [2,0,2,1,0]
+    
+    init(imageName: String, size: CGSize, barrageCategory: UInt32, ballCategory: UInt32, term: terminalNode, shift: CGPoint) {
         
         let texture = SKTexture(imageNamed: imageName)
-        super.init(texture: texture, color: UIColor.black, size: size)
-        self.physicsBody = SKPhysicsBody(texture: self.texture!, size: self.size)
-        self.physicsBody?.isDynamic = false
-        self.physicsBody?.allowsRotation = false
-        self.physicsBody?.categoryBitMask = barrageCategory
-        self.physicsBody?.contactTestBitMask = ballCategory
+        let barrage = SKSpriteNode(texture: texture, color: .clear, size: size)
+        
+        super.init(texture: nil, color: .clear, size: size)
+        barrage.position = CGPoint(x: shift.x * self.size.width, y: shift.y * self.size.height)
+        barrage.physicsBody = SKPhysicsBody(texture: barrage.texture!, size: barrage.size)
+        barrage.physicsBody?.isDynamic = false
+        barrage.physicsBody?.allowsRotation = false
+        barrage.physicsBody?.categoryBitMask = barrageCategory
+        barrage.physicsBody?.contactTestBitMask = ballCategory | barrageCategory
+        self.addChild(barrage)
         isUserInteractionEnabled = true
+        terminal = term
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,14 +37,25 @@ class BarrageNode: SKSpriteNode {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (terminal.isHidden) {
-            terminal.currentbarrage = self
-            terminal.isHidden = false
-        }
-        else {
-            print(terminal.currentbarrage)
-            terminal.isHidden = true
-        }
+        terminal.currentbarrage = self
         
+        self.set_actions()
+    }
+    
+    func set_actions() {
+        var action: [SKAction] = []
+        for i in 0...4 {
+            if Arr[i] == 0 {
+                action.append(SKAction.rotate(byAngle: CGFloat(0), duration: 1))
+            }
+            if Arr[i] == 1 {
+                action.append(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1))
+            }
+            if Arr[i] == 2 {
+                action.append(SKAction.rotate(byAngle: CGFloat(-Double.pi), duration: 1))
+            }
+        }
+        print(action)
+        self.run(SKAction.repeatForever(SKAction.sequence(action)))
     }
 }
