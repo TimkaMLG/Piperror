@@ -86,7 +86,7 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
         ball.speed = 0
         self.addChild(ball)
         
-        terminal.draw()
+
     }
 
     func didBegin(_ contact: SKPhysicsContact) {
