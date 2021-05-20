@@ -55,15 +55,15 @@ class terminalNode: SKSpriteNode {
         
         let Button2 = But(imageNamed: "startbutton", num: 1, line: i)
         
-        super.init(texture: SKTexture(imageNamed: "startbutton"), color: UIColor.clear, size: size)
+        super.init(texture: nil, color: UIColor.clear, size: size)
         
-        Button1.size = CGSize(width: self.size.width * 0.16, height: self.size.height * 0.09)
+        Button1.size = CGSize(width: self.size.width * 0.16, height: self.size.height * 0.6)
     
-        Button1.position = CGPoint(x: self.size.width / 6, y: self.size.height / 7)
+        Button1.position = CGPoint(x: -self.size.width / 3, y: 0)
      
-        Button2.size = CGSize(width: self.size.width * 0.16, height: self.size.height * 0.09)
+        Button2.size = CGSize(width: self.size.width * 0.16, height: self.size.height * 0.6)
         
-        Button2.position = CGPoint(x: self.size.width / 3, y: self.size.height / 7)
+        Button2.position = CGPoint(x: -self.size.width / 6, y: 0)
     
         self.addChild(Button1)
         self.addChild(Button2)
