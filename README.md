@@ -16,6 +16,7 @@ Piperror is a coding game in which the player needs to set a sequence of command
 
 Installation
 - Clone repository using ```git clone https://github.com/PanyshevAlex/Piperror.git```
+- Open file ```piperror.xcodeproj```
 - You must have a swift compiler with SpriteKit library connected, GamelayKit
 - Building with Xcode
 
