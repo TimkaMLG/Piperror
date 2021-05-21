@@ -75,14 +75,14 @@ class LevelMenuScene: SKScene {
     
     level1 = ButtonNode(imageNamed: "level1_0")
     level1.size = CGSize(width: 0.3 * self.size.width, height: 0.3 * self.size.width)
-    level1.position = CGPoint(x: 0.25 * self.size.width, y: 1 * self.size.width)
+        level1.position = CGPoint(x: 0.25 * self.size.width, y: 1.2 * self.size.width)
     level1.texture = SKTexture(imageNamed: "level1_0")
     level1.handler = level1Action
     self.addChild(level1)
         
     level2 = ButtonNode(imageNamed: "level2_0")
     level2.size = CGSize(width: 0.3 * self.size.width, height: 0.3 * self.size.width)
-    level2.position = CGPoint(x: 0.75 * self.size.width, y: 1 * self.size.width)
+        level2.position = CGPoint(x: 0.75 * self.size.width, y: 1.2 * self.size.width)
     level2.texture = SKTexture(imageNamed: "level2_0")
     level2.handler = level2Action
     self.addChild(level2)

@@ -28,7 +28,7 @@ self.backgroundColor = .black
 
 startButton = ButtonNode(imageNamed: "playbutton")
 startButton.size = CGSize(width: 0.85 * self.size.width, height: 0.20 * self.size.width)
-    startButton.position = CGPoint(x: 0.5 * self.size.width, y: 0.8 * self.size.width)
+startButton.position = CGPoint(x: 0.5 * self.size.width, y: 1 * self.size.width)
 startButton.handler = startButtonAction
 self.addChild(startButton)
 
