@@ -22,6 +22,6 @@ Installation
 
 ## Documentation
 
-- File "Button.swift" - implementation of a button by creating a separate class "ButtonNode". The "handler" function responds to a button press. The "texture" method inserts the desired image.
+- File "Button.swift" - implementation of a button by creating a separate class "ButtonNode" with property ```isUserInteractionEnabled = true```. The "handler" function responds to a button press. The "texture" method inserts the desired image. 
 - The file "barrage.swift" creates an obstacle class which is added to the "Gamescene(number).swift"
-- The file "terminal.swift" creates a terminal template that implements the transfer of player commands. Each obstacle creates a prototype of such a term.
+- The file "terminal.swift" creates a terminal template that implements the transfer of player commands. Terminal creates buttons by special class which contains ```hadnler1``` to handle entered commands and save them as property of barrage.
