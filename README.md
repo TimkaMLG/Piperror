@@ -8,3 +8,4 @@ Piperror is a coding game in which the player needs to set a sequence of command
 - 
 
 ![bruh text](https://github.com/PanyshevAlex/Piperror/blob/master/pics/terminal.png?raw=true | height=100)
+<img src="https://github.com/PanyshevAlex/Piperror/blob/master/pics/terminal.png?raw=true" height="400"/>
