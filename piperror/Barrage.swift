@@ -37,12 +37,14 @@ class BarrageNode: SKSpriteNode {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         terminal.currentbarrage = self
         terminal.set_bar()
         
         
         self.set_actions()
         terminal.draw()
+        print(self.Arr)
     }
     
     func set_actions() {
@@ -58,7 +60,7 @@ class BarrageNode: SKSpriteNode {
                 action.append(SKAction.rotate(byAngle: CGFloat(-Double.pi), duration: 1))
             }
         }
-        print(action)
+        
         self.run(SKAction.repeatForever(SKAction.sequence(action)))
     }
 }

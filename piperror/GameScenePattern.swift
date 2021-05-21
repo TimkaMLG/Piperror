@@ -108,7 +108,7 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
     }
     
     func exitButtonAction() {
-        let LevelMenu = LevelMenuScene(size: self.frame.size)
+        let LevelMenu = StartMenuScene(size: self.frame.size)
         self.view?.presentScene(LevelMenu)
     }
     

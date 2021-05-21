@@ -27,6 +27,8 @@ class terminalNode: SKSpriteNode {
         }
         
         func handler1() {
+            termNode.currentbarrage.set_actions()
+
             if termNode.currentbarrage.Arr[numb] == 0 {
                 termNode.currentbarrage.Arr[numb] = 0
                 self.texture = SKTexture(imageNamed: "startbutton")
@@ -59,12 +61,13 @@ class terminalNode: SKSpriteNode {
                 self.texture = SKTexture(imageNamed: "exitbutton")
                 print(termNode.currentbarrage.Arr)
             }*/
+
             
             
         }
         func set_curbar(curbar: BarrageNode) {
             curbar.Arr[numb] = termNode.currentbarrage.Arr[numb]
-            print(1, curbar.Arr)
+
         }
         
         required init(coder aDecoder: NSCoder) {
@@ -133,8 +136,8 @@ class terminalNode: SKSpriteNode {
     func set_bar() {
         
         self.Button1.set_curbar(curbar: currentbarrage)
-        print(2,currentbarrage.Arr)
-        print(Button1.termNode.currentbarrage.Arr)
+
+
     }
     func draw() {
         if Button1 != nil {
