@@ -50,7 +50,7 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
         startButton = ButtonNode(imageNamed: "startbutton")
         startButton.size = CGSize(width: 0.12 * self.size.width, height: 0.12 * self.size.width)
         startButton.position = CGPoint(x: 0.1 * self.size.width, y: 0.1 * self.size.width)
-        startButton.handler = startButtonAction
+        //startButton.handler = startButtonAction
         self.addChild(startButton)
         //create exit button
         exitButton = ButtonNode(imageNamed: "exitbutton")
@@ -98,14 +98,7 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
     
     
     
-    func startButtonAction() {
-        if (!gameStarted){
-            gameStarted = true
-            moving.speed = 1
-            ball.speed = 1
-            ball.physicsBody?.velocity = CGVector(dx: 0, dy: 100)
-        }
-    }
+    
     
     func exitButtonAction() {
         let LevelMenu = StartMenuScene(size: self.frame.size)

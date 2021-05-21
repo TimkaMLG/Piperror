@@ -53,13 +53,13 @@ class BarrageNode: SKSpriteNode {
         var action: [SKAction] = []
         for i in 0...4 {
             if Arr[i] == 0 {
-                action.append(SKAction.rotate(byAngle: CGFloat(0), duration: 1))
-            }
-            if Arr[i] == 1 {
-                action.append(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1))
+                action.append(SKAction.rotate(byAngle: CGFloat(0), duration: 2))
             }
             if Arr[i] == 2 {
-                action.append(SKAction.rotate(byAngle: CGFloat(-Double.pi), duration: 1))
+                action.append(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 2))
+            }
+            if Arr[i] == 1 {
+                action.append(SKAction.rotate(byAngle: CGFloat(-Double.pi), duration: 2))
             }
         }
         

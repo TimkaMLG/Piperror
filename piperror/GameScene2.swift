@@ -67,6 +67,20 @@ class GameScene2 : GameScenePattern {
                                     y: 0.70 * self.size.height-barrier4.size.height*35/90)
         
         barrier4.terminal = terminal
+        self.startButton.handler = startButtonAction
         moving.addChild(barrier4)
+    }
+    
+    func startButtonAction() {
+        if (!gameStarted){
+            barrier1.set_actions()
+            barrier2.set_actions()
+            barrier3.set_actions()
+            barrier4.set_actions()
+            gameStarted = true
+            moving.speed = 1
+            ball.speed = 1
+            ball.physicsBody?.velocity = CGVector(dx: 0, dy: 100)
+        }
     }
 }

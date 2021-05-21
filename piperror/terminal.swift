@@ -62,6 +62,7 @@ class terminalNode: SKSpriteNode {
                 print(termNode.currentbarrage.Arr)
             }*/
             termNode.currentbarrage.set_actions()
+            termNode.draw()
             print(termNode.currentbarrage.Arr)
 
             
@@ -156,35 +157,35 @@ class terminalNode: SKSpriteNode {
             switch self.currentbarrage.Arr[1]  {
                 case 0: self.Button2.texture = SKTexture(imageNamed: "nothing")
                 case 1: self.Button2.texture = SKTexture(imageNamed: "right")
-                case 2: self.Button1.texture = SKTexture(imageNamed: "left")
+                case 2: self.Button2.texture = SKTexture(imageNamed: "left")
                 default: self.Button2.texture = SKTexture(imageNamed: "nothing")
             
             }
         }
         if Button3 != nil {
             switch self.currentbarrage.Arr[2]  {
-                case 0: self.Button1.texture = SKTexture(imageNamed: "nothing")
-                case 1: self.Button1.texture = SKTexture(imageNamed: "right")
-                case 2: self.Button1.texture = SKTexture(imageNamed: "left")
-                default: self.Button1.texture = SKTexture(imageNamed: "nothing")
+                case 0: self.Button3.texture = SKTexture(imageNamed: "nothing")
+                case 1: self.Button3.texture = SKTexture(imageNamed: "right")
+                case 2: self.Button3.texture = SKTexture(imageNamed: "left")
+                default: self.Button3.texture = SKTexture(imageNamed: "nothing")
             
             }
         }
         if Button4 != nil {
             switch self.currentbarrage.Arr[3]  {
-                case 0: self.Button1.texture = SKTexture(imageNamed: "nothing")
-                case 1: self.Button1.texture = SKTexture(imageNamed: "right")
-                case 2: self.Button1.texture = SKTexture(imageNamed: "left")
-                default: self.Button1.texture = SKTexture(imageNamed: "nothing")
+                case 0: self.Button4.texture = SKTexture(imageNamed: "nothing")
+                case 1: self.Button4.texture = SKTexture(imageNamed: "right")
+                case 2: self.Button4.texture = SKTexture(imageNamed: "left")
+                default: self.Button4.texture = SKTexture(imageNamed: "nothing")
             
             }
         }
         if Button5 != nil {
             switch self.currentbarrage.Arr[4]  {
-                case 0: self.Button1.texture = SKTexture(imageNamed: "nothing")
-                case 1: self.Button1.texture = SKTexture(imageNamed: "right")
-                case 2: self.Button1.texture = SKTexture(imageNamed: "left")
-                default: self.Button1.texture = SKTexture(imageNamed: "nothing")
+                case 0: self.Button5.texture = SKTexture(imageNamed: "nothing")
+                case 1: self.Button5.texture = SKTexture(imageNamed: "right")
+                case 2: self.Button5.texture = SKTexture(imageNamed: "left")
+                default: self.Button5.texture = SKTexture(imageNamed: "nothing")
             
             }
         }
