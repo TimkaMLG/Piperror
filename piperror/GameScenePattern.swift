@@ -10,6 +10,9 @@ import SpriteKit
 import GameplayKit
 
 var Arr = [[0,0], [0,0], [0,0], [0,0]]
+// шаблон для уравня
+// создает:
+// фон, шар, терминал
 class GameScenePattern : SKScene, SKPhysicsContactDelegate {
     
     var ball:SKSpriteNode!
@@ -30,11 +33,12 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
         
         
 
-        
+        // init self
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = .zero
         self.anchorPoint = .zero
         self.backgroundColor = UIColor(#colorLiteral(red: 0.2177612185, green: 0.2177672982, blue: 0.2177640498, alpha: 1))
+        // create lines
         line = SKSpriteNode(imageNamed: "line")
         line.size = CGSize(width: self.size.width * 24/90, height: self.size.height * 9 / 16)
         line.position = CGPoint(x: self.size.width / 2, y: self.size.height * 9 / 16)
@@ -88,7 +92,7 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
         
 
     }
-
+    // start conditions
     func didBegin(_ contact: SKPhysicsContact) {
         gameover = true
         ball.speed = 0
@@ -99,12 +103,13 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
     
     
     
-    
+    // exit button action
     func exitButtonAction() {
         let LevelMenu = StartMenuScene(size: self.frame.size)
         self.view?.presentScene(LevelMenu)
     }
     
+    // when something was touched
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         let touchPosition = touch!.location(in: self)

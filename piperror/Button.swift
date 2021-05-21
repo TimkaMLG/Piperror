@@ -9,11 +9,8 @@
 import Foundation
 import SpriteKit
 
+// шаблон для кнопки
 class ButtonNode: SKSpriteNode {
-
-
-
-
 
     var handler: (() -> Void)?
     
@@ -32,7 +29,7 @@ class ButtonNode: SKSpriteNode {
     weak var currentTouch: UITouch?
     
 
-    
+    // действия при нажатии на кнопку
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         handler?()
     }

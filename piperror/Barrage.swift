@@ -9,12 +9,15 @@
 import Foundation
 import SpriteKit
 
+// шаблон для препятстствия
 class BarrageNode: SKSpriteNode {
-
+    
     var handler: (() -> Void)?
-    var terminal:terminalNode!
-    var Arr = [0,0,0,0,0]
+    var terminal:terminalNode! // terminal
+    var Arr = [0,0,0,0,0] // массив поведения 
     var i = Int()
+    
+    // инициализатор
     init(imageName: String, size: CGSize, barrageCategory: UInt32, ballCategory: UInt32, term: terminalNode, shift: CGPoint) {
         
         let texture = SKTexture(imageNamed: imageName)
@@ -32,10 +35,12 @@ class BarrageNode: SKSpriteNode {
         terminal = term
     }
     
+    // деструктор
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
+    //  действия при нажатии на преапятствие
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (terminal.isHidden) {
             terminal.isHidden = false
@@ -49,6 +54,7 @@ class BarrageNode: SKSpriteNode {
         print(self.Arr)
     }
     
+    // установка поведения барьера
     func set_actions() {
         var action: [SKAction] = []
         for i in 0...4 {
