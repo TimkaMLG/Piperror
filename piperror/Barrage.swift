@@ -37,7 +37,9 @@ class BarrageNode: SKSpriteNode {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        if (terminal.isHidden) {
+            terminal.isHidden = false
+        }
         terminal.currentbarrage = self
         terminal.set_bar()
         

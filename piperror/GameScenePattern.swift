@@ -64,7 +64,7 @@ class GameScenePattern : SKScene, SKPhysicsContactDelegate {
         
         terminal.position = CGPoint(x: self.size.width / 2, y: 3 * startButton.size.height)
         self.addChild(terminal)
-        terminal.isHidden = false
+        terminal.isHidden = true
         //setup ball
         let ballTexture = SKTexture(imageNamed: "ball.png")
         ballTexture.filteringMode = .nearest
