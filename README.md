@@ -6,3 +6,5 @@ Piperror is a coding game in which the player needs to set a sequence of command
 
 - You need to open the application and press the "Play" button. After that a scene with a choice of levels will appear.
 - 
+
+![bruh text](https://github.com/PanyshevAlex/Piperror/blob/master/pics/terminal.png?raw=true)
