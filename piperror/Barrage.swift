@@ -46,11 +46,11 @@ class BarrageNode: SKSpriteNode {
             terminal.isHidden = false
         }
         terminal.currentbarrage = self
-        terminal.set_bar()
+        terminal.set_barrage()
         
         
         self.set_actions()
-        terminal.draw()
+        terminal.sprite_update()
         print(self.Arr)
     }
     

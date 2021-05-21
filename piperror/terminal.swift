@@ -12,60 +12,59 @@ import SpriteKit
 class terminalNode: SKSpriteNode {
     var currentbarrage: BarrageNode!
     //modified class Button for buttons in terminal
-    class But: ButtonNode {
+    class terminal_button: ButtonNode {
         weak var termNode: terminalNode!
-        var numb = Int()
+        var number = Int()
         //initialization of buttons
         init(imageNamed name: String, num: Int) {
-            numb = num
+            number = num
             super.init(imageNamed: name)
             self.handler = handler1
         }
         
         //handler of interactions
         func handler1() {
-            if termNode.currentbarrage.Arr[numb] == 0 {
+            if termNode.currentbarrage.Arr[number] == 0 {
                 self.texture = SKTexture(imageNamed: "nothing")
             }
-            if termNode.currentbarrage.Arr[numb] == 1 {
+            if termNode.currentbarrage.Arr[number] == 1 {
                 self.texture = SKTexture(imageNamed: "right")
                 
             }
-            if termNode.currentbarrage.Arr[numb] == 2 {
+            if termNode.currentbarrage.Arr[number] == 2 {
                 self.texture = SKTexture(imageNamed: "left")
             }
-            termNode.currentbarrage.Arr[numb] = (termNode.currentbarrage.Arr[numb] + 1)%3
+            termNode.currentbarrage.Arr[number] = (termNode.currentbarrage.Arr[number] + 1)%3
             termNode.currentbarrage.set_actions()
-            termNode.draw()
+            termNode.sprite_update()
             print(termNode.currentbarrage.Arr)
         }
         //function to transport values of lacal Array to array of currentbarrage
         
         func set_curbar(curbar: BarrageNode) {
-            curbar.Arr[numb] = termNode.currentbarrage.Arr[numb]
+            curbar.Arr[number] = termNode.currentbarrage.Arr[number]
         }
         
         required init(coder aDecoder: NSCoder) {
                     fatalError("init(coder:) has not been implemented")
             }
-       
     }
     
-    var Button1: But!
-    var Button2: But!
-    var Button3: But!
-    var Button4: But!
-    var Button5: But!
+    var Button1: terminal_button!
+    var Button2: terminal_button!
+    var Button3: terminal_button!
+    var Button4: terminal_button!
+    var Button5: terminal_button!
     
     //initialization of terminal
     init(size: CGSize) {
         //creating buttons
         
-        Button1 = But(imageNamed: "nothing", num: 0)
-        Button2 = But(imageNamed: "nothing", num: 1)
-        Button3 = But(imageNamed: "nothing", num: 2)
-        Button4 = But(imageNamed: "nothing", num: 3)
-        Button5 = But(imageNamed: "nothing", num: 4)
+        Button1 = terminal_button(imageNamed: "nothing", num: 0)
+        Button2 = terminal_button(imageNamed: "nothing", num: 1)
+        Button3 = terminal_button(imageNamed: "nothing", num: 2)
+        Button4 = terminal_button(imageNamed: "nothing", num: 3)
+        Button5 = terminal_button(imageNamed: "nothing", num: 4)
         
         super.init(texture: nil, color: UIColor.clear, size: size)
         
@@ -93,12 +92,12 @@ class terminalNode: SKSpriteNode {
     }
     
     // function to connect currentbarrage with local values
-    func set_bar() {
+    func set_barrage() {
         self.Button1.set_curbar(curbar: currentbarrage)
     }
     
     //function to update sprites of buttons
-    func draw() {
+    func sprite_update() {
         if Button1 != nil {
             switch self.currentbarrage.Arr[0]  {
                 case 0: self.Button1.texture = SKTexture(imageNamed: "nothing")
@@ -108,7 +107,6 @@ class terminalNode: SKSpriteNode {
             }
         }
         if Button2 != nil {
-            //print(self.currentbarrage.Arr[1])
             switch self.currentbarrage.Arr[1]  {
                 case 0: self.Button2.texture = SKTexture(imageNamed: "nothing")
                 case 1: self.Button2.texture = SKTexture(imageNamed: "right")
