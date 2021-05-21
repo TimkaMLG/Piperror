@@ -10,11 +10,11 @@ import Foundation
 import SpriteKit
 
 class BarrageNode: SKSpriteNode {
-    var i = Int()
+
     var handler: (() -> Void)?
     var terminal:terminalNode!
-    var Arr = [2,0,2,1,0]
-    
+    var Arr = [0,0,0,0,0]
+    var i = Int()
     init(imageName: String, size: CGSize, barrageCategory: UInt32, ballCategory: UInt32, term: terminalNode, shift: CGPoint) {
         
         let texture = SKTexture(imageNamed: imageName)
@@ -38,8 +38,11 @@ class BarrageNode: SKSpriteNode {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         terminal.currentbarrage = self
+        terminal.set_bar()
+        
         
         self.set_actions()
+        terminal.draw()
     }
     
     func set_actions() {
