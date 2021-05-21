@@ -27,7 +27,7 @@ class terminalNode: SKSpriteNode {
         }
         
         func handler1() {
-            termNode.currentbarrage.set_actions()
+            
 
             if termNode.currentbarrage.Arr[numb] == 0 {
                 termNode.currentbarrage.Arr[numb] = 0
@@ -61,6 +61,8 @@ class terminalNode: SKSpriteNode {
                 self.texture = SKTexture(imageNamed: "exitbutton")
                 print(termNode.currentbarrage.Arr)
             }*/
+            termNode.currentbarrage.set_actions()
+            print(termNode.currentbarrage.Arr)
 
             
             
