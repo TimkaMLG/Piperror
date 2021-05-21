@@ -7,17 +7,20 @@
 
 import Foundation
 import SpriteKit
-
+// class of terminal to interaction with user
 class terminalNode: SKSpriteNode {
     
     var currentbarrage: BarrageNode!
+    //modified class Button for buttons in terminal
     class But: ButtonNode {
         weak var termNode: terminalNode!
         var numb = Int()
-        //var cond : Int!
+       
         var lin = Int()
+        
+        //initialization of buttons
         init(imageNamed name: String, num: Int) {
-            //cond = 0
+          
             numb = num
             
             
@@ -26,41 +29,28 @@ class terminalNode: SKSpriteNode {
             self.handler = handler1
         }
         
+        //handler of interactions
         func handler1() {
             
 
             if termNode.currentbarrage.Arr[numb] == 0 {
                 termNode.currentbarrage.Arr[numb] = 0
                 self.texture = SKTexture(imageNamed: "nothing")
-                //print(termNode.currentbarrage.Arr)
+                
             }
             if termNode.currentbarrage.Arr[numb] == 1 {
                 termNode.currentbarrage.Arr[numb] = 1
                 self.texture = SKTexture(imageNamed: "right")
-                //print(termNode.currentbarrage.Arr)
+                
             }
             if termNode.currentbarrage.Arr[numb] == 2 {
                 termNode.currentbarrage.Arr[numb] = 2
                 self.texture = SKTexture(imageNamed: "left")
-                //print(termNode.currentbarrage.Arr)
+               
             }
-            //var Arr1 = termNode.currentbarrage.Arr
+        
             termNode.currentbarrage.Arr[numb] = (termNode.currentbarrage.Arr[numb] + 1)%3
-           /* if termNode.currentbarrage.Arr[numb] == 0 {
-                termNode.currentbarrage.Arr[numb] = 0
-                self.texture = SKTexture(imageNamed: "startbutton")
-                print(termNode.currentbarrage.Arr)
-            }
-            if termNode.currentbarrage.Arr[numb] == 1 {
-                termNode.currentbarrage.Arr[numb] = 1
-                self.texture = SKTexture(imageNamed: "exitbutton")
-                print(termNode.currentbarrage.Arr)
-            }
-            if termNode.currentbarrage.Arr[numb] == 2 {
-                termNode.currentbarrage.Arr[numb] = 2
-                self.texture = SKTexture(imageNamed: "exitbutton")
-                print(termNode.currentbarrage.Arr)
-            }*/
+
             termNode.currentbarrage.set_actions()
             termNode.draw()
             print(termNode.currentbarrage.Arr)
@@ -68,6 +58,7 @@ class terminalNode: SKSpriteNode {
             
             
         }
+        //function to transport values of lacal Array to array of currentbarrage
         func set_curbar(curbar: BarrageNode) {
             curbar.Arr[numb] = termNode.currentbarrage.Arr[numb]
 
@@ -78,6 +69,7 @@ class terminalNode: SKSpriteNode {
             }
        
     }
+    
     var Button1: But!
     var Button2: But!
     var Button3: But!
@@ -85,9 +77,9 @@ class terminalNode: SKSpriteNode {
     var Button5: But!
     
     
-    
+    //initialization of terminal
     init(size: CGSize) {
-        
+        //creating buttons
         
         Button1 = But(imageNamed: "nothing", num: 0)
     
@@ -136,12 +128,14 @@ class terminalNode: SKSpriteNode {
         self.addChild(Button4)
         self.addChild(Button5)
     }
+    // function to connect currentbarrage with local values
     func set_bar() {
         
         self.Button1.set_curbar(curbar: currentbarrage)
 
 
     }
+    //function to update sprites of buttons
     func draw() {
         if Button1 != nil {
             switch self.currentbarrage.Arr[0]  {
